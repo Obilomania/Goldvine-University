@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Goldvine_University.Models.VIewModel
+namespace Goldvine_University.Models.ViewModel
 {
     public class LoginViewModel
     {

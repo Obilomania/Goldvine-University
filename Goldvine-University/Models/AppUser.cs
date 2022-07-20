@@ -6,7 +6,7 @@ namespace IdentityFrameWork.Models
 {
     public class AppUser : IdentityUser
     {
-        public string NickName { get; set; }
+        public string? NickName { get; set; }
         [NotMapped]
         public string RoleId { get; set; }
         [NotMapped]

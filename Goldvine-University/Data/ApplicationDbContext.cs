@@ -11,6 +11,6 @@ namespace Goldvine_University.Data
         {
 
         }
-
+        public DbSet<AppUser> AppUser { get; set; }
     }
 }

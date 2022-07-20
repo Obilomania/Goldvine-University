@@ -3,6 +3,20 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1 class="text-dark">Goldvine University Portal</h1>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @if (User.IsInRole("Admin"))
+        {
+            <h6 class="text-info">Your Role is an Admin</h6>
+        }
+        else if (User.IsInRole("Lecturer"))
+        {
+            <h6 class="text-info">Your Role is an Lecturer</h6>
+        }
+        else
+        {
+            <h6 class="text-info">Your role is a Student</h6>
+        }
+    }
 </div>

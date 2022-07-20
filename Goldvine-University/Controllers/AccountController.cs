@@ -1,4 +1,4 @@
-﻿using Goldvine_University.Models.VIewModel;
+﻿using Goldvine_University.Models.ViewModel;
 using IdentityFrameWork.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -106,9 +106,7 @@ namespace IdentityFrameWork.Controllers
                 Value = "Student",
                 Text = "Student"
             });
-            RegisterViewModel registerviewModel = new RegisterViewModel();
-            registerviewModel.RoleList = listItems;
-            registerviewModel.ReturnUrl = returnUrl;
+            registerViewModel.RoleList = listItems;
             return View(registerViewModel);
         }
 
