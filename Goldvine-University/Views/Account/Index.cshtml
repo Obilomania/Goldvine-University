@@ -1,1 +1,25 @@
-﻿<h1>THIS IS THE STUDENT AND LECTURER INDEX</h1>
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="home-bg">
+    <div class="transparent"></div>
+    <img src="/img/Unibg.jpg" />
+</div>
+<div class="dashboard__button">
+    <h5 class="dashboard_head">Click to go to your Section</h5>
+    <div class="portals">
+        <div class="student__portal">
+            <a class="text-light" asp-area="" asp-controller="Account" asp-action="Login">LOGIN</a>
+            <a class="text-light" asp-area="" asp-controller="Account" asp-action="Register">REGISTER</a>
+            <h6 class="text-info">Student Portal</h6>
+        </div>
+
+        <div class="lecturer__portal">
+            <a class="text-light" asp-area="" asp-controller="Account" asp-action="Login">LOGIN</a>
+            <a class="text-light" asp-area="" asp-controller="Account" asp-action="LecturerRegister">REGISTER</a>
+            <h6 class="text-info">Lecturer Portal</h6>
+        </div>
+    </div>
+</div>
+

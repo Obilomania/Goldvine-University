@@ -226,3 +226,59 @@ font-weight:bolder;
     cursor: pointer;
 }
 */
+
+
+/*STUDENT LECTURER INDEX WITH BOOTSTRAP*/
+.dashboard__button {
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+    width: 25rem;
+    margin: 10rem auto;
+    z-index: 2;
+    padding: .7rem 2rem;
+}
+    .dashboard__button .dashboard_head{
+        color:white;
+        letter-spacing:.1rem;
+        margin-bottom:3rem;
+    }
+    .dashboard__button .portals {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 35rem;
+        margin-bottom: 3rem;
+        gap:5rem;
+    }
+    .dashboard__button .student__portal {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        font-size: 1rem;
+        background-color: rgba(255,255,255, 0.4);
+        padding: 4rem 2rem;
+        border-radius: 1rem 0 0 1rem;
+    }
+    .dashboard__button .lecturer__portal {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        font-size: 1rem;
+        background-color: rgba(255,255,255, 0.4);
+        padding: 4rem 2rem;
+        border-radius: 0 1rem 1rem 0;
+    }
+    .dashboard__button a {
+        background-color: rgba(255,255,255, 0.4);
+        Width:8rem;
+        text-align:center;
+        border-radius:.5rem;
+        padding:.5rem
+    }
+        
