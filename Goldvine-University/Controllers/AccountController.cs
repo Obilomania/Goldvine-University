@@ -26,23 +26,12 @@ namespace IdentityFrameWork.Controllers
         //REGISTER CONTROLLER
         public async Task<IActionResult> Register(string? returnUrl = null)
         {
-            if (!await _roleManager.RoleExistsAsync("Admin"))
+            if (!await _roleManager.RoleExistsAsync("Student"))
             {
-                await _roleManager.CreateAsync(new IdentityRole("Admin"));
-                await _roleManager.CreateAsync(new IdentityRole("Lecturer"));
                 await _roleManager.CreateAsync(new IdentityRole("Student"));
             }
             List<SelectListItem> listItems = new List<SelectListItem>();
-            listItems.Add(new SelectListItem()
-            {
-                Value = "Admin",
-                Text = "Admin"
-            }); 
-            listItems.Add(new SelectListItem()
-            {
-                Value = "Lecturer",
-                Text = "Lecturer"
-            });
+           
             listItems.Add(new SelectListItem()
             {
                 Value = "Student",
@@ -73,11 +62,84 @@ namespace IdentityFrameWork.Controllers
                 var result = await _userManager.CreateAsync(user, registerViewModel.Password);
                 if (result.Succeeded)
                 {
-                    if (registerViewModel.RoleSelected != null && registerViewModel.RoleSelected.Length > 0 && registerViewModel.RoleSelected == "Admin")
+                    if (registerViewModel.RoleSelected != null && registerViewModel.RoleSelected.Length > 0 && registerViewModel.RoleSelected == "Student")
+                    {
+                        await _userManager.AddToRoleAsync(user, "Student");
+                    }
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return LocalRedirect(returnUrl);
+                }
+                ModelState.AddModelError("Password", "User could not be created. Password not Unique enough.");
+            }
+            List<SelectListItem> listItems = new List<SelectListItem>();
+          
+            listItems.Add(new SelectListItem()
+            {
+                Value = "Student",
+                Text = "Student"
+            });
+            registerViewModel.RoleList = listItems;
+            return View(registerViewModel);
+        }
+
+
+
+        //ADMIN REGISTER CONTROLLER
+
+        public async Task<IActionResult> AdminRegister(string? returnUrl = null)
+        {
+            if (!await _roleManager.RoleExistsAsync("Admin"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole("Admin"));
+                await _roleManager.CreateAsync(new IdentityRole("Lecturer"));
+                await _roleManager.CreateAsync(new IdentityRole("Student"));
+            }
+            List<SelectListItem> listItems = new List<SelectListItem>();
+            listItems.Add(new SelectListItem()
+            {
+                Value = "Admin",
+                Text = "Admin"
+            });
+            listItems.Add(new SelectListItem()
+            {
+                Value = "Lecturer",
+                Text = "Lecturer"
+            });
+            listItems.Add(new SelectListItem()
+            {
+                Value = "Student",
+                Text = "Student"
+            });
+
+
+            AdminViewModel adminViewModel = new AdminViewModel();
+            adminViewModel.RoleList = listItems;
+            adminViewModel.ReturnUrl = returnUrl;
+            return View(adminViewModel);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AdminRegister(AdminViewModel adminViewModel, string? returnUrl = null)
+        {
+            adminViewModel.ReturnUrl = returnUrl; ;
+            returnUrl = returnUrl ?? Url.Content("~/");
+            if (ModelState.IsValid)
+            {
+                var user = new AppUser
+                {
+                    Email = adminViewModel.Email,
+                    UserName = adminViewModel.Username
+                };
+                var result = await _userManager.CreateAsync(user, adminViewModel.Password);
+                if (result.Succeeded)
+                {
+                    if (adminViewModel.RoleSelected != null && adminViewModel.RoleSelected.Length > 0 && adminViewModel.RoleSelected == "Admin")
                     {
                         await _userManager.AddToRoleAsync(user, "Admin");
                     }
-                    else if (registerViewModel.RoleSelected != null && registerViewModel.RoleSelected.Length > 0 && registerViewModel.RoleSelected == "Lecturer")
+                    else if (adminViewModel.RoleSelected != null && adminViewModel.RoleSelected.Length > 0 && adminViewModel.RoleSelected == "Lecturer")
                     {
                         await _userManager.AddToRoleAsync(user, "Lecturer");
                     }
@@ -106,11 +168,69 @@ namespace IdentityFrameWork.Controllers
                 Value = "Student",
                 Text = "Student"
             });
-            registerViewModel.RoleList = listItems;
-            return View(registerViewModel);
+            adminViewModel.RoleList = listItems;
+            return View(adminViewModel);
         }
 
 
+        //LECTURER REGISTER CONTROLLER
+        public async Task<IActionResult> LecturerRegister(string? returnUrl = null)
+        {
+            if (!await _roleManager.RoleExistsAsync("lecturer"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole("Lecturer"));
+            }
+            List<SelectListItem> listItems = new List<SelectListItem>();
+            
+            listItems.Add(new SelectListItem()
+            {
+                Value = "Lecturer",
+                Text = "Lecturer"
+            });
+
+
+            LecturerRegisterViewModel lecturerRegisterviewModel = new LecturerRegisterViewModel();
+            lecturerRegisterviewModel.RoleList = listItems;
+            lecturerRegisterviewModel.ReturnUrl = returnUrl;
+            return View(lecturerRegisterviewModel);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LecturerRegister(LecturerRegisterViewModel lecturerRegisterviewModel, string? returnUrl = null)
+        {
+            lecturerRegisterviewModel.ReturnUrl = returnUrl; ;
+            returnUrl = returnUrl ?? Url.Content("~/");
+            if (ModelState.IsValid)
+            {
+                var user = new AppUser
+                {
+                    Email = lecturerRegisterviewModel.Email,
+                    UserName = lecturerRegisterviewModel.Username
+                };
+                var result = await _userManager.CreateAsync(user, lecturerRegisterviewModel.Password);
+                if (result.Succeeded)
+                {
+                    if (lecturerRegisterviewModel.RoleSelected != null && lecturerRegisterviewModel.RoleSelected.Length > 0 && lecturerRegisterviewModel.RoleSelected == "Lecturer")
+                    {
+                        await _userManager.AddToRoleAsync(user, "Lecturer");
+                    }
+                    
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return LocalRedirect(returnUrl);
+                }
+                ModelState.AddModelError("Password", "User could not be created. Password not Unique enough.");
+            }
+            List<SelectListItem> listItems = new List<SelectListItem>();
+            listItems.Add(new SelectListItem()
+            {
+                Value = "Lecturer",
+                Text = "Lecturer"
+            });
+            lecturerRegisterviewModel.RoleList = listItems;
+            return View(lecturerRegisterviewModel);
+        }
 
         //[HttpGet]
         //public IActionResult ForgotPassword()

@@ -4,22 +4,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Goldvine_University.Models.ViewModel
 {
-    public class RegisterViewModel
+    public class LecturerRegisterViewModel
     {
         [Required]
         [Display(Name = "Username")]
         public string Username { get; set; }
 
-        [Display(Name = "Profile Photo")]
-        public string Image { get; set; }
 
         [Required]
-        [Display(Name ="First Name")]
-        public string FirstName { get; set; }
-
-        [Required]
-        [Display(Name = "Last Name")]
-        public string   LastName { get; set; }
+        [Display(Name = "Full Name")]
+        public string FUllName { get; set; }
 
         [Required]
         [EmailAddress]
@@ -40,12 +34,7 @@ namespace Goldvine_University.Models.ViewModel
         public Gender Gender { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
-        [Display(Name = "Date Of Birth")]
-        public DateTime DOB { get; set; }
-
-        [Required]
-        [Display(Name = "Registration Number")]
+        [Display(Name = "Lecturer ID. Number")]
         public string RegNumber { get; set; }
 
         public Faculty Faculty { get; set; }
@@ -54,6 +43,5 @@ namespace Goldvine_University.Models.ViewModel
         public string? ReturnUrl { get; set; }
         public IEnumerable<SelectListItem>? RoleList { get; set; }
         public string? RoleSelected { get; set; }
-
     }
 }

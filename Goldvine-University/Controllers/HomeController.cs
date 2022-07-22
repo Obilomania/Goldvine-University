@@ -18,7 +18,17 @@ namespace Goldvine_University.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Admission()
+        {
+            return View();
+        }
+
+        public IActionResult Event()
         {
             return View();
         }

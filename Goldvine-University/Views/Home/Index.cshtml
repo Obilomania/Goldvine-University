@@ -1,9 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-<h1 class="text-dark">Goldvine University Portal</h1>
+<div class="home-bg">
+    <div class="transparent"></div>
+    <img src="/img/home-bg.jpg" />
+</div>
+<div class="text-center front">
+    <div class="welcome">
+        <h4 class="text-light">WELCOME</h4>
+        <h5 class="text-light">TO</h5>
+        <h1 class="text-light">GOLDVINE UNIVERSITY</h1>
+    </div>
     @if (User.Identity.IsAuthenticated)
     {
         @if (User.IsInRole("Admin"))
@@ -20,3 +27,23 @@
         }
     }
 </div>
+@*<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a href="post.html">
+                    <h2 class="post-title">The World is Dominated by Tech</h2>
+                    <h3 class="post-subtitle">Everything Tech is better than Everything Else</h3>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!">Obilomania</a>
+                    on July 8, 2022
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+        </div>
+    </div>
+</div>*@
