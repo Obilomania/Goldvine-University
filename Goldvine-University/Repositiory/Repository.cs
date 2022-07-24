@@ -12,7 +12,7 @@ namespace Goldvine_University.Repositiory
         public Repository(ApplicationDbContext context)
         {
             _context = context;
-            this.dbSet = _context.Set<T>();
+            dbSet = context.Set<T>();
         }
         public void Add(T entity)
         {

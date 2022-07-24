@@ -26,4 +26,8 @@
     <Folder Include="Views\Student\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Views\Post\Index.cshtml" />
+  </ItemGroup>
+
 </Project>
