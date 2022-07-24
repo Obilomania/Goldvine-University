@@ -18,7 +18,7 @@ namespace Goldvine_University.Repositiory
 
         public void Update(Lecturer lecturer)
         {
-            _context.Update(lecturer);
+            _context.Lecturers.Update(lecturer);
          }
     }
 }

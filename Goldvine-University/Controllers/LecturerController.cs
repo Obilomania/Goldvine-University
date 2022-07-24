@@ -50,7 +50,7 @@ namespace Goldvine_University.Controllers
             {
                 return BadRequest();
             }
-           return View(lecturerFromDb);
+            return View(lecturerFromDb);
         }
 
         [HttpPost]
@@ -92,9 +92,9 @@ namespace Goldvine_University.Controllers
                 return NotFound();
             }
             _unitOfWork.Lecturer.Remove(lecturerFromDb);
-                _unitOfWork.Save();
-                return RedirectToAction("Index");
-            
+            _unitOfWork.Save();
+            return RedirectToAction("Index");
+
         }
 
         //DETAIL CONTROLLER

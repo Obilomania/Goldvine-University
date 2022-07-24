@@ -1,6 +1,10 @@
-﻿namespace Goldvine_University.Repositiory.IRepository
+﻿using Goldvine_University.Models;
+
+namespace Goldvine_University.Repositiory.IRepository
 {
-    public class IStudentRepository
+    public interface IStudentRepository : IRepository<Student>
     {
+        void Update(Student student);
+        //void Save(); 
     }
 }
