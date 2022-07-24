@@ -1,4 +1,5 @@
-﻿using IdentityFrameWork.Models;
+﻿using Goldvine_University.Models;
+using IdentityFrameWork.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ namespace Goldvine_University.Data
         {
 
         }
-        public DbSet<AppUser> AppUser { get; set; }
+        public DbSet<Student>  Students { get; set; }
+        public DbSet<Lecturer>  Lecturers { get; set; }
     }
 }

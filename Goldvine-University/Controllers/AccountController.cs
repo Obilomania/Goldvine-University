@@ -50,14 +50,14 @@ namespace IdentityFrameWork.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel registerViewModel, string? returnUrl = null)
         {
-            registerViewModel.ReturnUrl = returnUrl; ;
+            registerViewModel.ReturnUrl = returnUrl; 
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
                 var user = new AppUser
                 {
                     Email = registerViewModel.Email,
-                    UserName = registerViewModel.Username
+                    UserName = registerViewModel.Email,
                 };
                 var result = await _userManager.CreateAsync(user, registerViewModel.Password);
                 if (result.Succeeded)
@@ -258,16 +258,19 @@ namespace IdentityFrameWork.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel, string? returnUrl)
         {
+            returnUrl ??= Url.Content("~/");
+
             if (ModelState.IsValid)
             {
 
                 var result = await _signInManager.PasswordSignInAsync(loginViewModel.UserName,
                     loginViewModel.Password,
                     loginViewModel.RememberMe,
-                    lockoutOnFailure: true);
+                    lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("Index", "Home");
+                    return LocalRedirect(returnUrl);
                 }
                 if (result.IsLockedOut)
                 {
@@ -287,7 +290,7 @@ namespace IdentityFrameWork.Controllers
         public async Task<IActionResult> LogOff()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Account");
         }
     }
 }

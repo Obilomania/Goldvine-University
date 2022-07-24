@@ -19,19 +19,24 @@ body {
     margin-bottom: 60px;
     font-family: "Montserrat", sans-serif;
 }
-.navbar{
-    z-index:2;
+
+.navbar {
+    z-index: 2;
 }
-.front{
-    z-index:2;
+
+.front {
+    z-index: 2;
 }
+
 .home-bg img {
     position: absolute;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100vh;
     z-index: -2;
 }
+
 .home-bg .transparent {
     width: 100%;
     height: 100vh;
@@ -40,22 +45,24 @@ body {
     top: 0;
     z-index: -1;
 }
-.welcome{
-    margin-top:5rem;
+
+.welcome {
+    margin-top: 5rem;
 }
 
-.welcome h1, h5,h4{
-letter-spacing:.5rem;
-font-weight:bolder;
-}
-.footer{
-    position:fixed;
-    bottom:0;
-    width:100%;
-    height:5rem;
-    justify-content:center;
-    display:flex;
-    align-items:center;
+    .welcome h1, h5, h4 {
+        letter-spacing: .5rem;
+        font-weight: bolder;
+    }
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 5rem;
+    justify-content: center;
+    display: flex;
+    align-items: center;
 }
 /*SIGN IN FORM CSS*/
 .form-container {
@@ -105,9 +112,9 @@ font-weight:bolder;
 
 .bi-eye {
     position: fixed;
-    background-color: white;
-    margin-left: -1.5rem;
-    margin-top: 0.3rem;
+    /*background-color: white;*/
+    margin-left: -1.7rem;
+    margin-top: 1px;
     cursor: pointer;
 }
 
@@ -231,27 +238,30 @@ font-weight:bolder;
 /*STUDENT LECTURER INDEX WITH BOOTSTRAP*/
 .dashboard__button {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     width: 25rem;
-    margin: 10rem auto;
+    margin: 3rem auto;
     z-index: 2;
     padding: .7rem 2rem;
 }
-    .dashboard__button .dashboard_head{
-        color:white;
-        letter-spacing:.1rem;
-        margin-bottom:3rem;
+
+    .dashboard__button .dashboard_head {
+        color: white;
+        letter-spacing: .1rem;
+        margin-bottom: 3rem;
     }
+
     .dashboard__button .portals {
         display: flex;
         justify-content: space-around;
         align-items: center;
         width: 35rem;
         margin-bottom: 3rem;
-        gap:5rem;
+        gap: 5rem;
     }
+
     .dashboard__button .student__portal {
         display: flex;
         flex-direction: column;
@@ -263,6 +273,7 @@ font-weight:bolder;
         padding: 4rem 2rem;
         border-radius: 1rem 0 0 1rem;
     }
+
     .dashboard__button .lecturer__portal {
         display: flex;
         flex-direction: column;
@@ -274,11 +285,11 @@ font-weight:bolder;
         padding: 4rem 2rem;
         border-radius: 0 1rem 1rem 0;
     }
+
     .dashboard__button a {
         background-color: rgba(255,255,255, 0.4);
-        Width:8rem;
-        text-align:center;
-        border-radius:.5rem;
-        padding:.5rem
+        Width: 8rem;
+        text-align: center;
+        border-radius: .5rem;
+        padding: .5rem
     }
-        

@@ -9,14 +9,14 @@
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="input">
             <i class="bi bi-person"></i>
-            <input asp-for="UserName" type="text" placeholder="Username">
+            <input asp-for="UserName" type="text" placeholder="Email">
             @*<span asp-validation-for="UserName" class="text-danger"></span>*@
         </div>
 
         <div class="input">
             <i class="bi bi-lock"></i>
             <input asp-for="Password" class="password" type="password" placeholder="Password">
-            <i class="bi bi-eye"></i>
+            <i class="bi bi-eye reveal"></i>
             @*<span asp-validation-for="Password" class="text-danger"></span>*@
         </div>
         <div class="checkbox">
@@ -26,7 +26,7 @@
         </div>
         <button type="submit" class="btn btn-success form-control">Log in</button>
         <div class="submit">
-            <a asp-action="Register" class="register" id="register" asp-area="" asp-controller="Account"> Register Account</a>
+            @*<a asp-action="Register" class="register" id="register" asp-area="" asp-controller="Account"> Register Account</a>*@
             <a asp-action="ForgotPassword" asp-controller="Account"> Forgot your passoword?</a>
         </div>
     </form>

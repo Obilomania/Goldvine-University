@@ -10,11 +10,6 @@ namespace Goldvine_University.Models.ViewModel
         [Display(Name = "Username")]
         public string Username { get; set; }
 
-
-        [Required]
-        [Display(Name = "Full Name")]
-        public string FUllName { get; set; }
-
         [Required]
         [EmailAddress]
         [Display(Name = "Email Address")]
@@ -30,16 +25,6 @@ namespace Goldvine_University.Models.ViewModel
         [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "The Passowrd and confirmation password does not match.")]
         public string ConfirmPassword { get; set; }
-
-        public Gender Gender { get; set; }
-
-        [Required]
-        [Display(Name = "Lecturer ID. Number")]
-        public string RegNumber { get; set; }
-
-        public Faculty Faculty { get; set; }
-        public Department Department { get; set; }
-
         public string? ReturnUrl { get; set; }
         public IEnumerable<SelectListItem>? RoleList { get; set; }
         public string? RoleSelected { get; set; }

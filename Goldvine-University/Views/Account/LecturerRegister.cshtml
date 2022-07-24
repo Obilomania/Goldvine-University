@@ -1,18 +1,10 @@
 ﻿@using Goldvine_University.Data.Enum
 @model Goldvine_University.Models.ViewModel.LecturerRegisterViewModel
 
-<form asp-controller="Account" asp-action="LecturerRegister" method="post" role="form">
+<form asp-controller="Account" asp-action="LecturerRegister" method="post" role="form" class="container">
     <h3 class="text-info">Lecturer Registration</h3>
     <hr />
     <div asp-validation-summary="All" class="text-danger"></div>
-
-    <div class="form-group">
-        <label asp-for="FUllName" class="col-md-2"></label>
-        <div class="col-md-10">
-            <input asp-for="FUllName" class="form-control" />
-            <span asp-validation-for="FUllName" class="text-danger"></span>
-        </div>
-    </div>
 
     <div class="form-group">
         <label asp-for="Email" class="col-md-2"></label>
@@ -43,34 +35,6 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <label asp-for="RegNumber" class="col-md-2"></label>
-        <div class="col-md-10">
-            <input asp-for="RegNumber" class="form-control" />
-            <span asp-validation-for="RegNumber" class="text-danger"></span>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Faculty"></label>
-        <div class="col-md-2">
-            <select asp-for="Faculty" class="form-control" asp-items="Html.GetEnumSelectList<Faculty>()">
-                <option selected="selected" value="">Faculty</option>
-            </select>
-        </div>
-        <span asp-validation-for="Faculty" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Department"></label>
-        <div class="col-md-2">
-            <select asp-for="Department" class="form-control" asp-items="Html.GetEnumSelectList<Department>()">
-                <option selected="selected" value="">Department</option>
-            </select>
-        </div>
-        <span asp-validation-for="Department" class="text-danger"></span>
-    </div>
-
     <div class="form-group" hidden>
         <label asp-for="RoleSelected" class="col-md-2"></label>
         <div class="col-md-10">
@@ -80,6 +44,7 @@
             </select>
         </div>
     </div>
+    <br />
     <div class="form-group">
         <div class="col-md-2">
             <button type="submit" class="btn btn-success">Register</button>
