@@ -58,9 +58,13 @@ namespace IdentityFrameWork.Controllers
                 {
                     Email = registerViewModel.Email,
                     UserName = registerViewModel.Email,
-                    BodyBuild = registerViewModel.BodyBuild,
                     FullName = registerViewModel.FullName,
-                    Age = registerViewModel.Age,
+                    Image = registerViewModel.Image,
+                    Gender = registerViewModel.Gender,
+                    DOB = registerViewModel.DOB,
+                    RegNumber = registerViewModel.RegNumber,
+                    Faculty = registerViewModel.Faculty,
+                    Department = registerViewModel.Department,
                 };
                 var result = await _userManager.CreateAsync(user, registerViewModel.Password);
                 if (result.Succeeded)
@@ -210,7 +214,14 @@ namespace IdentityFrameWork.Controllers
                 var user = new AppUser
                 {
                     Email = lecturerRegisterviewModel.Email,
-                    UserName = lecturerRegisterviewModel.Username
+                    UserName = lecturerRegisterviewModel.Email,
+                    FullName = lecturerRegisterviewModel.FullName,
+                    Image = lecturerRegisterviewModel.Image,
+                    Gender = lecturerRegisterviewModel.Gender,
+                    DOB = lecturerRegisterviewModel.DOB,
+                    RegNumber = lecturerRegisterviewModel.RegNumber,
+                    Faculty = lecturerRegisterviewModel.Faculty,
+                    Department = lecturerRegisterviewModel.Department,
                 };
                 var result = await _userManager.CreateAsync(user, lecturerRegisterviewModel.Password);
                 if (result.Succeeded)

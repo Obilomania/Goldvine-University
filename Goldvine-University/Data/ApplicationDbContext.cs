@@ -12,9 +12,6 @@ namespace Goldvine_University.Data
         {
 
         }
-
-        public DbSet<Student> Students { get; set; }
-        //public DbSet<Lecturer>  Lecturers { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
     }

@@ -14,6 +14,8 @@ namespace Goldvine_University.Controllers
         {
             _userManager = userManager;
         }
+
+        //STUDENT PROFILE CONTROLLER
         public async Task<IActionResult> StudentProfile()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -21,13 +23,41 @@ namespace Goldvine_University.Controllers
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-            var registerVIewModel = new RegisterViewModel()
+            var registerViewModel = new RegisterViewModel()
             {
                 FullName = user.FullName,
-                BodyBuild = user.BodyBuild,
-                Age = user.Age,
+                Email = user.Email,
+                Image = user.Image,
+                Gender = user.Gender,
+                DOB = user.DOB,
+                Department = user.Department,
+                RegNumber = user.RegNumber,
+                Faculty = user.Faculty
             };
-            return View(registerVIewModel); ;
+            return View(registerViewModel); 
+        }
+
+
+        //LECTURER PROFILE CONTROLLER
+        public async Task<IActionResult> LecturerProfile()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+            var lecturerRegisterViewModel = new LecturerRegisterViewModel()
+            {
+                FullName = user.FullName,
+                Email = user.Email,
+                Image = user.Image,
+                Gender = user.Gender,
+                DOB = user.DOB,
+                Department = user.Department,
+                RegNumber = user.RegNumber,
+                Faculty = user.Faculty
+            };
+            return View(lecturerRegisterViewModel);
         }
     }
 }

@@ -9,31 +9,28 @@ namespace IdentityFrameWork.Models
     public class AppUser : IdentityUser
     {
         [Required]
-        [Display(Name = "Username")]
+        [Display(Name = "Full Name")]
         public string FullName { get; set; }
 
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email Address")]
-        public string Email { get; set; }
+        [Display(Name = "Profile Image")]
+        public string Image { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = " The {0} must be atleast {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm Password")]
-        [Compare("Password", ErrorMessage = "The Passowrd and confirmation password does not match.")]
-        public string ConfirmPassword { get; set; }
+        public Gender Gender { get; set; }
 
         [Required]
-        public string BodyBuild { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime DOB { get; set; }
 
         [Required]
-        public string Age { get; set; }
+        [Display(Name = "Registration No.")]
+        public string RegNumber { get; set; }
 
+        [Required]
+        public Faculty Faculty { get; set; }
+
+        [Required]
+        public Department Department { get; set; }
 
         [NotMapped]
         public string RoleId { get; set; }

@@ -7,8 +7,28 @@ namespace Goldvine_University.Models.ViewModel
     public class LecturerRegisterViewModel
     {
         [Required]
-        [Display(Name = "Username")]
-        public string Username { get; set; }
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
+
+        [Display(Name = "Profile Image")]
+        public string? Image { get; set; }
+
+        [Required]
+        public Gender Gender { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime DOB { get; set; }
+
+        [Required]
+        [Display(Name = "Lecturer ID No.")]
+        public string RegNumber { get; set; }
+
+        [Required]
+        public Faculty Faculty { get; set; }
+
+        [Required]
+        public Department Department { get; set; }
 
         [Required]
         [EmailAddress]
