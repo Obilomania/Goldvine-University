@@ -1,0 +1,46 @@
+﻿@model Goldvine_University.Models.ViewModel.RegisterViewModel
+
+@{
+    ViewData["Title"] = "StudentProfile";
+}
+
+<h1 class="text-info text-center">StudentProfile</h1>
+@*<div class="row">
+    <div class="col-md-6">
+        <form id="profile-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input asp-for="FullName" class="form-control" disabled />
+                <label asp-for="FullName" class="form-label"></label>
+            </div>
+            <div class="form-floating">
+                <input asp-for="BodyBuild" class="form-control" />
+                <label asp-for="BodyBuild" class="form-label"></label>
+                <span asp-validation-for="BodyBuild" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Age" class="form-control" />
+                <label asp-for="Age" class="form-label"></label>
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+        </form>
+    </div>
+</div>*@
+<table class="table table-striped container">
+    <tr>
+        <td>
+            @Model.FullName
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Model.BodyBuild
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Model.Age
+        </td>
+    </tr>
+</table>

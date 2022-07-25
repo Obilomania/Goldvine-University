@@ -1,11 +1,13 @@
 ﻿using Goldvine_University.Data.Enum;
 using IdentityFrameWork.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Goldvine_University.Models
 {
-    public class Student
+    public class Student 
     {
         [Key]
         public int Id { get; set; }
@@ -14,9 +16,9 @@ namespace Goldvine_University.Models
         [Display(Name = "Full Name")]
         public string FullName { get; set; }
 
-        [Required]
+        [ValidateNever]
         [Display(Name = "Profile Image")]
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
         [Required]
         public Gender Gender { get; set; }

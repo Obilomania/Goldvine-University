@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Goldvine_University.Models.Student>
+
+
+<table class="table table-bordered table-striped" style="width:100%">
+    @*    <thead>
+    <tr>
+    <th class="text-center">
+    @Html.DisplayNameFor(model => model.FullName)
+    </th>
+    <th class="text-center">
+    @Html.DisplayNameFor(model => model.RegNumber)
+    </th>
+    <th class="text-center">Actions</th>
+    </tr>
+    </thead>*@
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="width:50%;">
+                <td class="text-center" style="width:25%;overflow:hidden">
+                    <img src="@Html.DisplayFor(modelItem => item.Image)" style="width:150px; height:150px; overflow:hidden;"/>
+                </td>
+            </tr>
+
+             <tr style="width:50%;">
+                <td class="text-center" style="width:25%; overflow:hidden">
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+            </tr>
+
+             <tr style="width:50%;">
+                <td class="text-center" style="width:25%; overflow:hidden">
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+            </tr>
+
+             <tr style="width:50%;">
+                <td class="text-center" style="width:25%; overflow:hidden">
+                    @Html.DisplayFor(modelItem => item.DOB)
+                </td>
+            </tr>
+
+             <tr style="width:50%;">
+                <td class="text-center" style="width:25%; overflow:hidden">
+                    @Html.DisplayFor(modelItem => item.RegNumber)
+                </td>
+            </tr>
+
+             <tr style="width:50%;">
+                <td class="text-center" style="width:25%; overflow:hidden">
+                    @Html.DisplayFor(modelItem => item.Faculty)
+                </td>
+            </tr>
+
+             <tr style="width:50%;">
+                <td class="text-center" style="width:25%; overflow:hidden">
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+            </tr>
+            
+<td class="text-center" style="width:25%; overflow:hidden">
+    <a class="btn btn-secondary" asp-controller="Post" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+    <a class="btn btn-info" asp-controller="Post" asp-action="Detail" asp-route-id="@item.Id"><i class="bi bi-info-circle"></i></a>
+    <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-x-circle"></i></a>
+</td>
+        }
+    </tbody>
+</table>
+

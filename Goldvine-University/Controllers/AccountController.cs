@@ -58,6 +58,9 @@ namespace IdentityFrameWork.Controllers
                 {
                     Email = registerViewModel.Email,
                     UserName = registerViewModel.Email,
+                    BodyBuild = registerViewModel.BodyBuild,
+                    FullName = registerViewModel.FullName,
+                    Age = registerViewModel.Age,
                 };
                 var result = await _userManager.CreateAsync(user, registerViewModel.Password);
                 if (result.Succeeded)
@@ -269,6 +272,13 @@ namespace IdentityFrameWork.Controllers
                     lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    var user = await _userManager.FindByNameAsync(loginViewModel.UserName);
+                    var roles = await _userManager.GetRolesAsync(user);
+                    string role = roles.FirstOrDefault();
+                    if (role.Equals("Student"))
+                    {
+                        return RedirectToAction("StudentProfile", "ProfileDetail");
+                    }
                     //return RedirectToAction("Index", "Home");
                     return LocalRedirect(returnUrl);
                 }

@@ -2,8 +2,8 @@
 {
     public interface IUnitOfWork
     {
-        ILecturerRepository Lecturer{ get; }
-        IStudentRepository Student{ get; }
+        //ILecturerRepository Lecturer{ get; }
+        //IStudentRepository Student{ get; }
         IPostRepository Post{ get; }
 
         void Save();

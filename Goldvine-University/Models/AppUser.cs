@@ -9,16 +9,8 @@ namespace IdentityFrameWork.Models
     public class AppUser : IdentityUser
     {
         [Required]
-        [Display(Name = "Profile Photo")]
-        public string Image { get; set; }
-
-        [Required]
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-
-        [Required]
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
+        [Display(Name = "Username")]
+        public string FullName { get; set; }
 
         [Required]
         [EmailAddress]
@@ -31,24 +23,18 @@ namespace IdentityFrameWork.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Required]
-        public Gender Gender { get; set; }
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm Password")]
+        [Compare("Password", ErrorMessage = "The Passowrd and confirmation password does not match.")]
+        public string ConfirmPassword { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
-        [Display(Name = "Date Of Birth")]
-        public DateTime DOB { get; set; }
+        public string BodyBuild { get; set; }
 
         [Required]
-        [Display(Name = "Registration Number")]
-        public string RegNumber { get; set; }
+        public string Age { get; set; }
 
-        [Required]
-        public Faculty Faculty { get; set; }
-        public Department Department { get; set; }
 
-        [Required]
-        public string NickName { get; set; }
         [NotMapped]
         public string RoleId { get; set; }
         [NotMapped]

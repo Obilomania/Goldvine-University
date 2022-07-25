@@ -23,11 +23,27 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Student\" />
+    <None Include="Views\Post\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Post\Index.cshtml" />
+    <Content Update="Views\Student\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Lecturer\" />
+    <Folder Include="wwwroot\images\student\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\launchSettings.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
