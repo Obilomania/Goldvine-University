@@ -3,6 +3,14 @@
 @model Goldvine_University.Models.ViewModel.LoginViewModel
 @inject SignInManager<AppUser> signInManager
 
+<div class="home-bg">
+    <div class="transparent"></div>
+    @*<img src="/img/home-bg.jpg" />*@
+</div>
+<br />
+<br />
+<br />
+
 <div class="form-container">
     <h3>Login</h3>
     <form class="inner-container" asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" role="form">

@@ -4,27 +4,34 @@
 @{
     ViewData["Title"] = "BlogPost";
 }
-
-<h1 class="text-info text-center">GoldVine University BlogPost</h1>
-
+<div class="home-bg">
+    <div class="transparent"></div>
+    @*<img src="/img/home-bg.jpg" />*@
+</div>
 <br />
+<br />
+<br />
+<br />
+
+<h1 class="text-info text-center">University Blog</h1>
+
 <br />
 
 @foreach (var item in Model)
 {
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
-            <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width:15rem; height:12rem;"/>
+            <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width:15rem; height:12rem;" />
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <!-- Post preview-->
                 <div class="post-preview">
                     <a asp-controller="Post" asp-action="Detail" asp-route-id="@item.Id">
-                        <h2 class="post-title">@Html.DisplayFor(modelItem => item.Title)</h2>
-                        <p class="post-subtitle">@Html.DisplayFor(modelItem => item.Description)</p>
+                        <h2 class="post-title text-light">@Html.DisplayFor(modelItem => item.Title)</h2>
+                        <p class="post-subtitle text-light">@Html.DisplayFor(modelItem => item.Description)</p>
                     </a>
-                    <p class="post-meta">
+                    <p class="post-meta text-light">
                         Posted by
-                        <a href="#!">Obilomania</a>
+                        <a href="#!" class="text-info">Obilomania</a>
                         @Html.DisplayFor(modelItem => item.Date)
                     </p>
                 </div>
