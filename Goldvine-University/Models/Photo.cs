@@ -1,5 +1,4 @@
 ﻿using Goldvine_University.Data.Enum;
-using IdentityFrameWork.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;

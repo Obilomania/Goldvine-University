@@ -23,6 +23,7 @@ namespace Goldvine_University.Controllers
             IEnumerable<Post> posts = _unitOfWork.Post.GetAll();
             return View(posts);
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             IEnumerable<Post> posts = _unitOfWork.Post.GetAll();
@@ -31,6 +32,7 @@ namespace Goldvine_University.Controllers
 
 
         //Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -77,6 +79,7 @@ namespace Goldvine_University.Controllers
         }
 
         //Edit
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0)
@@ -170,6 +173,7 @@ namespace Goldvine_University.Controllers
 
 
         //DELETE
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)

@@ -1,7 +1,7 @@
 using Goldvine_University.Data;
+using Goldvine_University.Models;
 using Goldvine_University.Repositiory;
 using Goldvine_University.Repositiory.IRepository;
-using IdentityFrameWork.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,7 +1,7 @@
 ﻿using Goldvine_University.Models;
 using Goldvine_University.Models.ViewModel;
 using Goldvine_University.Repositiory.IRepository;
-using IdentityFrameWork.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -100,7 +100,7 @@ namespace IdentityFrameWork.Controllers
 
 
         //ADMIN REGISTER CONTROLLER
-
+        [Authorize]
         public async Task<IActionResult> AdminRegister(string? returnUrl = null)
         {
             if (!await _roleManager.RoleExistsAsync("Admin"))

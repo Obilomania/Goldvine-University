@@ -19,15 +19,15 @@
     {
         @if (User.IsInRole("Admin"))
         {
-            <h6 class="text-info">Your Role is an Admin</h6>
+            <h6 class="text-info">Welcome Admin</h6>
         }
         else if (User.IsInRole("Lecturer"))
         {
-            <h6 class="text-info">Your Role is an Lecturer</h6>
+            <h6 class="text-info">Welcome Lecturer</h6>
         }
         else
         {
-            <h6 class="text-info">Your role is a Student</h6>
+            <h6 class="text-info">Welcome Student</h6>
         }
     }
 </div>

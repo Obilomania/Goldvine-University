@@ -1,9 +1,19 @@
 ﻿@model Post
 
-<form method="post" asp-action="Create" enctype="multipart/form-data">
+
+<div class="home-bg">
+    <div class="transparent"></div>
+    @*<img src="/img/home-bg.jpg" />*@
+</div>
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <form method="post" asp-action="Create" enctype="multipart/form-data">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary">Create Post</h2>
+            <h2 class="text-primary text-center">Create Post</h2>
             <hr />
         </div>
         <div class="mb-3">
@@ -29,6 +39,7 @@
     </div>
 </form>
 
+</div>
 
 @section Scripts{
     @{

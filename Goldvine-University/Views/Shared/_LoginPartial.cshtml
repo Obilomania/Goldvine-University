@@ -1,5 +1,5 @@
-﻿@using IdentityFrameWork.Models
-@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Identity
+
 
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
@@ -7,6 +7,18 @@
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
+        if (User.IsInRole("Admin"))
+        {
+            <li class="nav-item">
+            <a class="nav-link px-lg-3 py-3 py-lg-4" asp-area="" asp-controller="Post" asp-action="Index">Post</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link px-lg-3 py-3 py-lg-4" asp-area="" asp-controller="User" asp-action="Index">Users</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link px-lg-3 py-3 py-lg-4" asp-area="" asp-controller="Roles" asp-action="Index">Roles</a>
+        </li>
+        }
         <li class="nav-item">
             <a class="nav-link px-lg-3 py-3 py-lg-4" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Welcome @((await UserManager.GetUserAsync(User)).RegNumber)</a>
         </li>
@@ -18,9 +30,11 @@
                 <button  type="submit" class="nav-link btn btn-link text-light" style="display:none;">Logout</button>
             </form>
         </li>
+        
     }
     else
     {
+
         <li class="nav-item">
             <a class="nav-link px-lg-3 py-3 py-lg-4" asp-area="" asp-controller="Account" asp-action="Index">Portal</a>
         </li>

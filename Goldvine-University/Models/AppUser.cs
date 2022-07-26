@@ -1,12 +1,11 @@
 ﻿using Goldvine_University.Data.Enum;
-using Goldvine_University.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace IdentityFrameWork.Models
+namespace Goldvine_University.Models
 {
     public class AppUser : IdentityUser
     {
@@ -15,7 +14,7 @@ namespace IdentityFrameWork.Models
         public string FullName { get; set; }
 
         [Display(Name = "Profile Image")]
-        public string Photo { get; set; }
+        public string? Photo { get; set; }
 
         [Required]
         public Gender Gender { get; set; }
@@ -35,11 +34,11 @@ namespace IdentityFrameWork.Models
         public Department Department { get; set; }
 
         [NotMapped]
-        public string RoleId { get; set; }
+        public string? RoleId { get; set; }
         [NotMapped]
-        public string Role { get; set; }
+        public string? Role { get; set; }
         [NotMapped]
-        public IEnumerable<SelectListItem> RoleList { get; set; }
+        public IEnumerable<SelectListItem>? RoleList { get; set; }
 
     }
 }

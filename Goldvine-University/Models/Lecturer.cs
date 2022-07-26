@@ -1,5 +1,4 @@
 ﻿using Goldvine_University.Data.Enum;
-using IdentityFrameWork.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
