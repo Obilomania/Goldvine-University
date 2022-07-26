@@ -1,4 +1,5 @@
 ﻿using Goldvine_University.Data.Enum;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
@@ -11,7 +12,7 @@ namespace Goldvine_University.Models.ViewModel
         public string FullName { get; set; }
 
         [Display(Name = "Profile Image")]
-        public string Image { get; set; }
+        public string Photo { get; set; }
 
         [Required]
         public Gender Gender { get; set; }

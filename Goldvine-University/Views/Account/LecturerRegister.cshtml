@@ -14,13 +14,13 @@
         </div>
     </div>
 
-    <div class="form-group">
+   @* <div class="form-group">
         <label asp-for="Image" class="col-md-2"></label>
         <div class="col-md-10">
             <input asp-for="Image" class="form-control" />
             <span asp-validation-for="Image" class="text-danger"></span>
         </div>
-    </div>
+    </div>*@
 
     <div class="form-group">
         <label asp-for="Gender" class="col-md-2"></label>
@@ -51,7 +51,7 @@
     <div class="form-group">
         <label asp-for="Faculty" class="col-md-2"></label>
         <div class="col-md-10">
-            <select asp-for="Faculty" asp-items="@Html.GetEnumSelectList<Gender>()" class="form-control">
+            <select asp-for="Faculty" asp-items="@Html.GetEnumSelectList<Faculty>()" class="form-control">
                 <option>--Select--</option>
             </select>
             <span asp-validation-for="Faculty" class="text-danger"></span>
@@ -61,7 +61,7 @@
     <div class="form-group">
         <label asp-for="Department" class="col-md-2"></label>
         <div class="col-md-10">
-            <select asp-for="Department" asp-items="@Html.GetEnumSelectList<Gender>()" class="form-control">
+            <select asp-for="Department" asp-items="@Html.GetEnumSelectList<Department>()" class="form-control">
                 <option>--Select--</option>
             </select>
             <span asp-validation-for="Department" class="text-danger"></span>

@@ -18,9 +18,15 @@
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
 
+
+         <div class="mb-3">
+            <label asp-for="ImageUrl"></label>
+            <input asp-for="ImageUrl" type="file" name="file" id="file-1" class="form-control" />
+            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        </div>
         
         <button type="submit" class="btn btn-success" style="width:150px">Update</button>
-        <a asp-controller="Post" asp-action="Index" class="btn btn-secondary" style="width:150px">Back To List</a>
+        <a asp-controller="Post" asp-action="Index" class="btn btn-secondary" style="width:fit-content">Back To List</a>
     </div>
 </form>
 
@@ -29,4 +35,22 @@
     @{
         <partial name="_ValidationScriptsPartial" />
     }
+    <script>
+        function previewBeforeUpload(id) {
+            document.querySelector("#" + id).addEventListener("change", function(e) {
+                if (e.target.files.length == 0) {
+                    return;
+                }
+                let file = e.target.files[0];
+                let url = URL.createObjectURL(file);
+                document.querySelector("#" + id + "-preview div").innerText = file.name;
+                document.querySelector("#" + id + "-preview img").src = url;
+            });
+        }
+
+        previewBeforeUpload("file-1");
+        previewBeforeUpload("file-2");
+        previewBeforeUpload("file-3");
+        previewBeforeUpload("file-4");
+    </script>
              }

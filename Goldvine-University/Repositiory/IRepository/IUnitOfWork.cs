@@ -3,7 +3,7 @@
     public interface IUnitOfWork
     {
         //ILecturerRepository Lecturer{ get; }
-        //IStudentRepository Student{ get; }
+        IPhotoRepository Photo { get; }
         IPostRepository Post{ get; }
 
         void Save();

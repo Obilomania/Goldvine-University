@@ -14,5 +14,6 @@ namespace Goldvine_University.Data
         }
         public DbSet<Post> Posts { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<Photo> Photos { get; set; }
     }
 }

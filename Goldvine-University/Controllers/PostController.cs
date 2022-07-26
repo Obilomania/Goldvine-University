@@ -16,6 +16,13 @@ namespace Goldvine_University.Controllers
             _unitOfWork = unitOfWork;
             _hostEnvironment = hostEnvironment;
         }
+
+        public IActionResult BlogPost()
+        {
+
+            IEnumerable<Post> posts = _unitOfWork.Post.GetAll();
+            return View(posts);
+        }
         public IActionResult Index()
         {
             IEnumerable<Post> posts = _unitOfWork.Post.GetAll();
@@ -30,12 +37,39 @@ namespace Goldvine_University.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Post post)
+        public IActionResult Create(Post post, IFormFile file)
         {
 
             if (ModelState.IsValid)
             {
-                _unitOfWork.Post.Add(post);
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                if (file != null)
+                {
+                    string fileName = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(wwwRootPath, @"images\posts");
+                    var extension = Path.GetExtension(file.FileName);
+
+                    if (post.ImageUrl != null)
+                    {
+                        var oldImagePath = Path.Combine(wwwRootPath, post.ImageUrl.TrimStart('\\'));
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                            System.IO.File.Delete(oldImagePath);
+                        }
+                    }
+
+                    using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                    {
+                        file.CopyTo(fileStreams);
+                    }
+                    post.ImageUrl = @"\images\posts\" + fileName + extension;
+                }
+                if (post.Id == 0)
+                {
+                    _unitOfWork.Post.Add(post);
+
+                }
+
                 _unitOfWork.Save();
                 return RedirectToAction("Index");
             }
@@ -60,12 +94,37 @@ namespace Goldvine_University.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Post post)
+        public IActionResult Edit(Post post, IFormFile file)
         {
             if (ModelState.IsValid)
             {
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                if (file != null)
+                {
+                    string fileName = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(wwwRootPath, @"images\posts");
+                    var extension = Path.GetExtension(file.FileName);
 
-                _unitOfWork.Post.Update(post);
+                    //if (post.ImageUrl != null)
+                    //{
+                    //    var oldImagePath = Path.Combine(wwwRootPath, post.ImageUrl.TrimStart('\\'));
+                    //    if (System.IO.File.Exists(oldImagePath))
+                    //    {
+                    //        System.IO.File.Delete(oldImagePath);
+                    //    }
+                    //}
+
+                    using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                    {
+                        file.CopyTo(fileStreams);
+                    }
+                    post.ImageUrl = @"\images\posts\" + fileName + extension;
+                }
+
+                if (post.Id != 0)
+                {
+                    _unitOfWork.Post.Update(post);
+                }
 
                 _unitOfWork.Save();
                 return RedirectToAction("Index");
@@ -135,6 +194,12 @@ namespace Goldvine_University.Controllers
             {
                 return NotFound();
             }
+            var oldImagePath = Path.Combine(_hostEnvironment.WebRootPath, post.ImageUrl.TrimStart('\\'));
+            if (System.IO.File.Exists(oldImagePath))
+            {
+                System.IO.File.Delete(oldImagePath);
+            }
+
             _unitOfWork.Post.Remove(post);
             _unitOfWork.Save();
             return RedirectToAction("Index");

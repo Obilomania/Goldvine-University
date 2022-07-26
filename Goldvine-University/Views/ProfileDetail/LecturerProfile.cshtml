@@ -1,7 +1,53 @@
-﻿
+﻿@model Goldvine_University.Models.ViewModel.LecturerRegisterViewModel
+
 @{
-    ViewData["Title"] = "LecturerProfile";
+    ViewData["Title"] = "Lecturer Profile";
 }
 
-<h1>LecturerProfile</h1>
+<div class="container">
+    <h1 class="text-info text-center">Lecturer Profile</h1>
+<div class="profile-table border">
+    <div class="image-output" > 
+    @*<img src="" style="width:8rem; height:8rem; border-radius:.5rem;"/>*@
 
+</div>
+<table class="fixed_headers table table-striped" style="width:30rem;">
+  <tbody>
+    <tr>
+      <td class="title">Full Name :</td>
+      <td>@Model.FullName</td>
+    </tr>    
+
+     <tr>
+      <td  class="title">Gender :</td>
+      <td>@Model.Gender</td>
+    </tr> 
+
+     <tr>
+      <td  class="title">Date Of Birth :</td>
+      <td>@Model.DOB</td>
+    </tr> 
+    
+     <tr>
+      <td  class="title">Registration Number :</td>
+      <td>@Model.RegNumber</td>
+    </tr>  
+     <tr>
+      <td  class="title">Faculty :</td>
+      <td>@Model.Faculty</td>
+    </tr> 
+
+     <tr>
+      <td  class="title">DepartMent :</td>
+      <td>@Model.Department</td>
+    </tr> 
+
+     <tr>
+      <td  class="title">Email Address :</td>
+      <td>@Model.Email</td>
+    </tr> 
+  </tbody>
+</table>
+
+</div>
+</div>

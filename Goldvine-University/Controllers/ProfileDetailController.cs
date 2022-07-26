@@ -1,4 +1,6 @@
-﻿using Goldvine_University.Models.ViewModel;
+﻿using Goldvine_University.Models;
+using Goldvine_University.Models.ViewModel;
+using Goldvine_University.Repositiory.IRepository;
 using IdentityFrameWork.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,10 +11,12 @@ namespace Goldvine_University.Controllers
     {
 
         private UserManager<AppUser> _userManager;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ProfileDetailController(UserManager<AppUser> userManager)
+        public ProfileDetailController(UserManager<AppUser> userManager, IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
+            _unitOfWork = unitOfWork;
         }
 
         //STUDENT PROFILE CONTROLLER
@@ -27,7 +31,8 @@ namespace Goldvine_University.Controllers
             {
                 FullName = user.FullName,
                 Email = user.Email,
-                Image = user.Image,
+                //Image = user.Image,
+                Photo = user.Photo,
                 Gender = user.Gender,
                 DOB = user.DOB,
                 Department = user.Department,
@@ -50,7 +55,7 @@ namespace Goldvine_University.Controllers
             {
                 FullName = user.FullName,
                 Email = user.Email,
-                Image = user.Image,
+                //Image = user.Image,
                 Gender = user.Gender,
                 DOB = user.DOB,
                 Department = user.Department,

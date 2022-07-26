@@ -11,12 +11,12 @@ namespace Goldvine_University.Repositiory
         {
             _context = context;
             //Lecturer = new LecturerRepository(_context);
-            //Student = new StudentRepository(_context);
+            Photo = new PhotoRepository(_context);
             Post = new PostRepository(_context);
            
         }
         //public ILecturerRepository Lecturer{get; private set;}
-        //public IStudentRepository Student{get; private set;}
+        public IPhotoRepository Photo { get; private set; }
         public IPostRepository Post{get; private set;}
 
         public void Save()

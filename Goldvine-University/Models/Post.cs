@@ -12,7 +12,11 @@ namespace Goldvine_University.Models
         [Required]
         public string Description { get; set; }
 
-        [DataType(DataType.Date)]
+        [ValidateNever]
+        [Display(Name = "Image")]
+        public string? ImageUrl { get; set; }
+
+        [DataType(DataType.DateTime)]
         public DateTime Date { get; set; } = DateTime.Now;
     }
 }

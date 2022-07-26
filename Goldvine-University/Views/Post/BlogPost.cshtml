@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Goldvine_University.Models.Post>
+
+
+@{
+    ViewData["Title"] = "BlogPost";
+}
+
+<h1 class="text-info text-center">GoldVine University BlogPost</h1>
+
+<br />
+<br />
+
+@foreach (var item in Model)
+{
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width:15rem; height:12rem;"/>
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a asp-controller="Post" asp-action="Detail" asp-route-id="@item.Id">
+                        <h2 class="post-title">@Html.DisplayFor(modelItem => item.Title)</h2>
+                        <p class="post-subtitle">@Html.DisplayFor(modelItem => item.Description)</p>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#!">Obilomania</a>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </p>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+            </div>
+        </div>
+    </div>
+}

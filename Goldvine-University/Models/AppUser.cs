@@ -1,5 +1,7 @@
 ﻿using Goldvine_University.Data.Enum;
+using Goldvine_University.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,7 +15,7 @@ namespace IdentityFrameWork.Models
         public string FullName { get; set; }
 
         [Display(Name = "Profile Image")]
-        public string Image { get; set; }
+        public string Photo { get; set; }
 
         [Required]
         public Gender Gender { get; set; }

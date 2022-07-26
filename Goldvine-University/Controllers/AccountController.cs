@@ -1,4 +1,6 @@
-﻿using Goldvine_University.Models.ViewModel;
+﻿using Goldvine_University.Models;
+using Goldvine_University.Models.ViewModel;
+using Goldvine_University.Repositiory.IRepository;
 using IdentityFrameWork.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +33,7 @@ namespace IdentityFrameWork.Controllers
                 await _roleManager.CreateAsync(new IdentityRole("Student"));
             }
             List<SelectListItem> listItems = new List<SelectListItem>();
-           
+
             listItems.Add(new SelectListItem()
             {
                 Value = "Student",
@@ -50,7 +52,7 @@ namespace IdentityFrameWork.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel registerViewModel, string? returnUrl = null)
         {
-            registerViewModel.ReturnUrl = returnUrl; 
+            registerViewModel.ReturnUrl = returnUrl;
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
@@ -59,7 +61,6 @@ namespace IdentityFrameWork.Controllers
                     Email = registerViewModel.Email,
                     UserName = registerViewModel.Email,
                     FullName = registerViewModel.FullName,
-                    Image = registerViewModel.Image,
                     Gender = registerViewModel.Gender,
                     DOB = registerViewModel.DOB,
                     RegNumber = registerViewModel.RegNumber,
@@ -73,13 +74,20 @@ namespace IdentityFrameWork.Controllers
                     {
                         await _userManager.AddToRoleAsync(user, "Student");
                     }
+                    var roles = await _userManager.GetRolesAsync(user);
+                    string role = roles.FirstOrDefault();
+                    //if (role.Equals("Student"))
+                    //{
+                    //    return RedirectToAction("StudentProfile", "ProfileDetail");
+                    //}
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect(returnUrl);
+                    //return LocalRedirect(returnUrl);
+                    return RedirectToAction("StudentProfile", "ProfileDetail");
                 }
                 ModelState.AddModelError("Password", "User could not be created. Password not Unique enough.");
             }
             List<SelectListItem> listItems = new List<SelectListItem>();
-          
+
             listItems.Add(new SelectListItem()
             {
                 Value = "Student",
@@ -188,7 +196,7 @@ namespace IdentityFrameWork.Controllers
                 await _roleManager.CreateAsync(new IdentityRole("Lecturer"));
             }
             List<SelectListItem> listItems = new List<SelectListItem>();
-            
+
             listItems.Add(new SelectListItem()
             {
                 Value = "Lecturer",
@@ -216,7 +224,7 @@ namespace IdentityFrameWork.Controllers
                     Email = lecturerRegisterviewModel.Email,
                     UserName = lecturerRegisterviewModel.Email,
                     FullName = lecturerRegisterviewModel.FullName,
-                    Image = lecturerRegisterviewModel.Image,
+                    //Image = lecturerRegisterviewModel.Image,
                     Gender = lecturerRegisterviewModel.Gender,
                     DOB = lecturerRegisterviewModel.DOB,
                     RegNumber = lecturerRegisterviewModel.RegNumber,
@@ -230,9 +238,15 @@ namespace IdentityFrameWork.Controllers
                     {
                         await _userManager.AddToRoleAsync(user, "Lecturer");
                     }
-                    
+                    var roles = await _userManager.GetRolesAsync(user);
+                    string role = roles.FirstOrDefault();
+                    //if (role.Equals("Student"))
+                    //{
+                    //    return RedirectToAction("StudentProfile", "ProfileDetail");
+                    //}
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect(returnUrl);
+                    //return LocalRedirect(returnUrl);
+                    return RedirectToAction("LecturerProfile", "ProfileDetail");
                 }
                 ModelState.AddModelError("Password", "User could not be created. Password not Unique enough.");
             }
@@ -289,6 +303,10 @@ namespace IdentityFrameWork.Controllers
                     if (role.Equals("Student"))
                     {
                         return RedirectToAction("StudentProfile", "ProfileDetail");
+                    }
+                    else if (role.Equals("Lecturer"))
+                    {
+                        return RedirectToAction("LecturerProfile", "ProfileDetail");
                     }
                     //return RedirectToAction("Index", "Home");
                     return LocalRedirect(returnUrl);

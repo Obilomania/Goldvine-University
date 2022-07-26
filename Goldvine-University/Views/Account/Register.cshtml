@@ -1,8 +1,25 @@
 ﻿@using Goldvine_University.Data.Enum
 @model Goldvine_University.Models.ViewModel.RegisterViewModel
 
-<form asp-controller="Account" asp-action="Register" method="post" role="form" class="container">
-    <h3 class="text-info">Student Registration</h3>
+
+
+<div class="register container">
+ <h3 class="text-info text-center">Student Registration</h3>
+    
+@*<div class="imageform mb-3">
+    <div class="grid">
+        <div class="form-element">
+            <label asp-for="Photo" class="control-label" id="file-1-preview">
+                <img src="https://bit.ly/3ubuq5o" alt="">
+                <div>
+                    <span>+</span>
+                </div>
+            </label>
+        </div>
+    </div>
+</div>*@
+
+<form asp-controller="Account" asp-action="Register" method="post" role="form" enctype="multipart/form-data" >
     <hr />
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
@@ -10,14 +27,6 @@
         <div class="col-md-10">
             <input asp-for="FullName" class="form-control" />
             <span asp-validation-for="FullName" class="text-danger"></span>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Image" class="col-md-2"></label>
-        <div class="col-md-10">
-            <input asp-for="Image" class="form-control" />
-            <span asp-validation-for="Image" class="text-danger"></span>
         </div>
     </div>
 
@@ -50,7 +59,7 @@
     <div class="form-group">
         <label asp-for="Faculty" class="col-md-2"></label>
         <div class="col-md-10">
-            <select asp-for="Faculty" asp-items="@Html.GetEnumSelectList<Gender>()" class="form-control">
+            <select asp-for="Faculty" asp-items="@Html.GetEnumSelectList<Faculty>()" class="form-control">
                 <option>--Select--</option>
             </select>
             <span asp-validation-for="Faculty" class="text-danger"></span>
@@ -60,7 +69,7 @@
     <div class="form-group">
         <label asp-for="Department" class="col-md-2"></label>
         <div class="col-md-10">
-            <select asp-for="Department" asp-items="@Html.GetEnumSelectList<Gender>()" class="form-control">
+            <select asp-for="Department" asp-items="@Html.GetEnumSelectList<Department>()" class="form-control">
                 <option>--Select--</option>
             </select>
             <span asp-validation-for="Department" class="text-danger"></span>
@@ -103,3 +112,6 @@
         </div>
     </div>
 </form>  
+</div>
+
+

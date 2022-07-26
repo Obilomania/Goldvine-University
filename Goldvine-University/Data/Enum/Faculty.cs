@@ -4,13 +4,11 @@ namespace Goldvine_University.Data.Enum
 {
     public enum Faculty
     {
-        [Display(Name ="Faculty Of Science")]
-        FacultyOfScience,
-        [Display(Name = "Faculty Of Law")]
-        FacultyOfLaw,
-        [Display(Name = "Faculty Of Art")]
-        FacultyOfArt,
-        [Display(Name = "Faculty Of Social Science")]
+        FACULTY,
+        Science,
+        Law,
+        fArt,
+        [Display(Name = "Social Science")]
         FacultyOfSocialScience
     }
 }

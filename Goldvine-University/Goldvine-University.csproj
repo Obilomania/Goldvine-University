@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\Student\Index.cshtml">
+    <Content Update="Views\Photo\Index.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <Folder Include="Views\Lecturer\" />
+    <Folder Include="wwwroot\images\posts\" />
     <Folder Include="wwwroot\images\student\" />
   </ItemGroup>
 
